@@ -21,6 +21,7 @@ body {
 
 .display {
     border: solid 2px black;
+    border-bottom: solid 4px black;
     display: flex;
     justify-content: flex-end;
     height: 20%;
@@ -34,14 +35,21 @@ button {
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    background-color: black;
-    color: rgb(221, 172, 11)
 }
 
 .fourth {
     width: 25%;
 }
 
-.third {
-    width: 33.33%;
+.math {
+    background-color: black;
+    color: rgb(221, 172, 11);
+}
+
+.oper {
+    background-color: rgb(12, 156, 156);
+}
+
+.clear, .equals {
+    background-color: rgb(224, 168, 11);
 }

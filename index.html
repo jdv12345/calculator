@@ -29,7 +29,7 @@
             <button type="button" class="fourth oper">*</button>
         </div>
         <div class="row four">
-            <button type="button" class="fourth math">0</button>
+            <button type="button" class="fourth math zero">0</button>
             <button type="button" class="fourth clear">clr</button>
             <button type="button" class="fourth equals">=</button>
             <button type="button" class="fourth oper">/</button>
@@ -88,9 +88,11 @@
                 } else if (typeof first == 'number' && second == null){
                     second = btn.textContent;
                     dis.textContent += btn.textContent;
+                    displayNumber = Number(second);
                 } else if (typeof first == 'number' && typeof second == 'string') {
                     second += btn.textContent;
                     dis.textContent += btn.textContent;
+                    displayNumber = Number(second);
                 } else if (typeof first == "number" && typeof second == 'number') {
                     second = null;
                     second = btn.textContent;
@@ -103,14 +105,16 @@
         opera.forEach((btn) => {
             btn.addEventListener('click', function() {
                 if (first == null && typeof displayNumber == 'string') {
-                    first = parseInt(displayNumber);
+                    first = Number(displayNumber);
                     op = btn.textContent;
                     dis.textContent = `${first} ${op} `;
+                    displayNumber = null;
                 } else if (typeof first == 'number' && typeof second == 'string') {
-                    second = parseInt(second);
+                    second = Number(second);
                     first = operate(first,op,second);
                     op = btn.textContent;
                     dis.textContent = `${first} ${op} `;
+                    displayNumber = null;
                 } else if (typeof first == "number" && typeof second == 'number') {
                     second = null;
                     op = btn.textContent;
@@ -123,7 +127,7 @@
             if (typeof first == 'number' && second == null) {
                 dis.textContent = first;
             } else if (typeof first == 'number' && typeof second == 'string') {
-                second = parseInt(second);
+                second = Number(second);
                 first = operate(first,op,second);
                 displayNumber = first;
                 dis.textContent = first;
@@ -145,6 +149,18 @@
             result = null;
         });
 
+        let zero = document.querySelector('.zero');
+        zero.addEventListener('click', function() {
+            if (typeof first == 'number' && op == '/') {
+                alert('Please do not divide by zero!');
+                dis.textContent = null;
+                first = null;
+                second = null;
+                op = null;
+                displayNumber = null;
+                result = null;
+            };
+        });
 
     </script>
     
